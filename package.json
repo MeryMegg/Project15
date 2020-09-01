@@ -1,0 +1,39 @@
+{
+  "name": "project15",
+  "version": "0.0.3",
+  "description": "training project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "eslint": "eslint"
+  },
+  "keywords": [],
+  "author": "Mary Skosyrskaya <merymeggs@yandex.ru>",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.5.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.0",
+    "validator": "^13.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeryMegg/Project15.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MeryMegg/project15/issues"
+  },
+  "homepage": "https://github.com/MeryMegg/project15#readme"
+}
