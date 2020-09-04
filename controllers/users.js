@@ -52,17 +52,18 @@ module.exports.createUser = (req, res, next) => {
     }))
     .then((user) => res.status(201).send({ data: user.omitPrivate() }))
     .catch((err) => {
+      let error
       if (err.name === 'ValidationError') {
-        throw new BadRequestError('Некорректные данные в запросе');
+        error = new BadRequestError('Некорректные данные в запросе');
         // res.status(400).send({ message: 'Некорректные данные в запросе' });
         // return;
       }
       if (err.name === 'MongoError' && err.code === 11000) {
-        throw new ConflictError('Пользователь с данным e-mail уже зарегистрирован');
+        error = new ConflictError('Пользователь с данным e-mail уже зарегистрирован');
         // res.status(409).send({ message: 'Пользователь с данным e-mail уже зарегистрирован' });
         // return;
       }
-      next(err);
+      next(error);
     });
 };
 
@@ -91,12 +92,13 @@ module.exports.updateUserProfile = (req, res, next) => {
       res.send({ data: user });
     })
     .catch((err) => {
+      let error;
       if (err.name === 'ValidationError') {
-        throw new BadRequestError('Некорректные данные в запросе');
+        error = new BadRequestError('Некорректные данные в запросе');
         // res.status(400).send({ message: 'Некорректные данные в запросе' });
         // return;
       }
-      next(err);
+      next(error);
     });
 };
 
