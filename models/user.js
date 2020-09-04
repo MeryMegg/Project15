@@ -5,13 +5,13 @@ const bcrypt = require('bcryptjs');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: [true, 'Это поле обязательное для заполнения'],
     minlength: [2, 'Длина имени от 2 до 30 символов'],
     maxlength: [30, 'Длина имени от 2 до 30 символов'],
   },
   about: {
     type: String,
-    required: true,
+    required: [true, 'Это поле обязательное для заполнения'],
     minlength: [2, 'Допустимая длина от 2 до 30 символов'],
     maxlength: [30, 'Допустимая длина от 2 до 30 символов'],
   },
@@ -21,12 +21,12 @@ const userSchema = new mongoose.Schema({
       validator: (link) => validator.isURL(link),
       message: (props) => `${props.value} некорректный адрес!`,
     },
-    required: true,
+    required: [true, 'Это поле обязательное для заполнения'],
   },
   email: {
     type: String,
-    required: true,
-    unique: true,
+    required: [true, 'Это поле обязательное для заполнения'],
+    unique: [true, 'Пользователь с данным e-mail уже зарегистрирован'],
     validate: {
       validator: (email) => validator.isEmail(email),
       message: (props) => `${props.value} некорректный email!`,
@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
+    required: [true, 'Это поле обязательное для заполнения'],
     select: false,
   },
 });
