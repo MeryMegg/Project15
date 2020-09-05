@@ -60,7 +60,7 @@ github: https://merymegg.github.io/Project15/
 - [winston](https://github.com/winstonjs/winston)
 - [express-winston](https://www.npmjs.com/package/express-winston)
 - [pm2](https://www.npmjs.com/package/pm2)
-- [nginx](https://www.npmjs.com/package/pm2)
+- [nginx](https://nginx.org/ru/)
 - [certbot](https://certbot.eff.org/)
 
 
