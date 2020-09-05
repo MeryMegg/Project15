@@ -6,7 +6,6 @@ const rateLimit = require('express-rate-limit');
 const { isCelebrate } = require('celebrate');
 
 const { PORT = 3000 } = process.env;
-const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const auth = require('./middlewares/auth');
@@ -36,8 +35,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
-
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(requestLogger);
 

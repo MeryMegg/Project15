@@ -29,12 +29,6 @@ module.exports.createUser = (req, res, next) => {
   const {
     name, about, avatar, email, password,
   } = req.body;
-  if (!name || name.trim().length < 2) {
-    throw new BadRequestError('Имя пользователя должно содержать не менее 2 символов помимо пробелов');
-  }
-  if (!password || password.trim().length < 8) {
-    throw new BadRequestError('Пароль должен содержать не менее 8 символов');
-  }
   bcrypt.hash(password, 10)
     .then((hash) => User.create({
       name, about, avatar, email, password: hash,
@@ -44,11 +38,13 @@ module.exports.createUser = (req, res, next) => {
       let error;
       if (err.name === 'ValidationError') {
         error = new BadRequestError('Некорректные данные в запросе');
+        next(error);
       }
       if (err.name === 'MongoError' && err.code === 11000) {
         error = new ConflictError('Пользователь с данным e-mail уже зарегистрирован');
+        next(error);
       }
-      next(error);
+      next(err);
     });
 };
 
@@ -116,7 +112,8 @@ module.exports.login = (req, res, next) => {
       let error;
       if (err.name === 'Error') {
         error = new AuthError('Неверный адрес электронной почты или пароль');
+        next(error);
       }
-      next(error);
+      next(err);
     });
 };

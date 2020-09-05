@@ -22,8 +22,9 @@ module.exports.createCard = (req, res, next) => {
       let error;
       if (err.name === 'ValidationError') {
         error = new BadRequestError('Некорректные данные в запросе');
+        next(error);
       }
-      next(error);
+      next(err);
     });
 };
 

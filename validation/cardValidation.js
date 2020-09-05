@@ -15,7 +15,7 @@ module.exports.createCardValidation = celebrate({
 
 module.exports.cardIdValidation = celebrate({
   params: Joi.object().keys({
-    cardId: Joi.objectId()
+    id: Joi.objectId()
       .error(() => new BadRequestError('Некорректный id карточки')),
   }),
 });
