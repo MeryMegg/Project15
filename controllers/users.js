@@ -38,13 +38,13 @@ module.exports.createUser = (req, res, next) => {
       let error;
       if (err.name === 'ValidationError') {
         error = new BadRequestError('Некорректные данные в запросе');
-        next(error);
+        return next(error);
       }
       if (err.name === 'MongoError' && err.code === 11000) {
         error = new ConflictError('Пользователь с данным e-mail уже зарегистрирован');
-        next(error);
+        return next(error);
       }
-      next(err);
+      return next(err);
     });
 };
 
@@ -70,8 +70,9 @@ module.exports.updateUserProfile = (req, res, next) => {
       let error;
       if (err.name === 'ValidationError') {
         error = new BadRequestError('Некорректные данные в запросе');
+        return next(error);
       }
-      next(error);
+      return next(err);
     });
 };
 
@@ -96,8 +97,9 @@ module.exports.updateUserAvatar = (req, res, next) => {
       let error;
       if (err.name === 'ValidationError') {
         error = new BadRequestError('Некорректные данные в запросе');
+        return next(error);
       }
-      next(error);
+      return next(err);
     });
 };
 
@@ -112,8 +114,8 @@ module.exports.login = (req, res, next) => {
       let error;
       if (err.name === 'Error') {
         error = new AuthError('Неверный адрес электронной почты или пароль');
-        next(error);
+        return next(error);
       }
-      next(err);
+      return next(err);
     });
 };
