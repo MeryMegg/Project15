@@ -5,7 +5,6 @@ const NotFoundError = require('../errors/not-found-err');
 const BadRequestError = require('../errors/bad-request-err');
 const ConflictError = require('../errors/conflict-err');
 const AuthError = require('../errors/auth-err');
-const ForbiddenError = require('../errors/forbidden-err');
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
@@ -60,10 +59,6 @@ module.exports.updateUserProfile = (req, res, next) => {
   )
     .orFail(new NotFoundError('Нет пользователя с таким id'))
     .then((user) => {
-      if (!user.equals(req.user._id)) {
-        throw new ForbiddenError('Вносить изменения можно только в свой профиль');
-      }
-
       res.send({ data: user });
     })
     .catch((err) => {
@@ -88,9 +83,6 @@ module.exports.updateUserAvatar = (req, res, next) => {
   )
     .orFail(new NotFoundError('Нет пользователя с таким id'))
     .then((user) => {
-      if (!user.equals(req.user._id)) {
-        throw new ForbiddenError('Изменить можно только свой аватар');
-      }
       res.send({ data: user });
     })
     .catch((err) => {

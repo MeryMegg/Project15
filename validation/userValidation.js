@@ -3,11 +3,11 @@ Joi.objectId = require('joi-objectid')(Joi);
 const validator = require('validator');
 const BadRequestError = require('../errors/bad-request-err');
 
-const name = Joi.string().alphanum().trim().min(2)
+const name = Joi.string().trim().min(2)
   .max(30)
   .required()
   .error(() => new BadRequestError('Поле `name` обязательное для заполнения и должно содержать от 2 до 30 символов'));
-const about = Joi.string().alphanum().trim().min(2)
+const about = Joi.string().trim().min(2)
   .max(30)
   .required()
   .error(() => new BadRequestError('Поле `about` обязательное для заполнения и должно содержать от 2 до 30 символов'));
@@ -36,18 +36,12 @@ module.exports.createUserValidation = celebrate({
 });
 
 module.exports.updateUserProfileValidation = celebrate({
-  params: Joi.object().keys({
-    id,
-  }),
   body: Joi.object().keys({
     name, about,
   }),
 });
 
 module.exports.updateUserAvatarValidation = celebrate({
-  params: Joi.object().keys({
-    id,
-  }),
   body: Joi.object().keys({
     avatar,
   }),
