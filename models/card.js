@@ -4,9 +4,9 @@ const validator = require('validator');
 const cardSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
-    minlength: 2,
-    maxlength: 30,
+    required: [true, 'Это поле обязательное для заполнения'],
+    minlength: [2, 'Длина названия карточки от 2 до 30 символов'],
+    maxlength: [30, 'Длина имени от 2 до 30 символов'],
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
@@ -19,7 +19,7 @@ const cardSchema = new mongoose.Schema({
       validator: (link) => validator.isURL(link),
       message: (props) => `${props.value} некорректный адрес!`,
     },
-    required: true,
+    required: [true, 'Это поле обязательное для заполнения'],
   },
   likes: {
     type: [
@@ -32,7 +32,7 @@ const cardSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    required: true,
+    required: [true, 'Это поле обязательное для заполнения'],
     default: Date.now,
   },
 });

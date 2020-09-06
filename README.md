@@ -1,5 +1,9 @@
 ## Проектная работа 15
 
+Публичный ip: 84.201.136.160
+url: https://interesting-place.ml
+github: https://merymegg.github.io/Project15/
+
 Версия: 0.0.2
 
 **Автор:** Скосырская Мария
@@ -9,7 +13,7 @@
 - знакомство с основами бэкенда
 - знакомство с Express
 - знакомство с MongoDB
-- 
+- знакомство с облачным сервером
 
 ## Задачи:
 
@@ -19,7 +23,12 @@
 - создать контроллеры и роуты для карточек
 - создать контроллеры и роуты для авторизации и аутентификации
 - обеспечить безопасность
-- залить проект на GitHub
+- настроить централизованную обработку ошибок
+- настроить валидацию запросов
+- реализовать логирование запросов и ошибок
+- создать и настроить облачный сервер
+- подготовить и задеплоить бекэнд на сервер
+- создать домен и прикрепить его к серверу
 
 ## Стек технологий:
 
@@ -32,6 +41,7 @@
 - ESlint
 - EditorConfig
 - Nodemon
+- Joi и celebrate
 - Git
 
 ## Пакеты которые используются в сборках:
@@ -44,6 +54,15 @@
 - [bcryptjs](https://www.npmjs.com/package/bcryptjs)
 - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 - [helmet](https://www.npmjs.com/package/helmet)
+- [express-rate-limit](https://www.npmjs.com/package/express-rate-limit)
+- [joi](https://joi.dev/api/?v=17.2.1)
+- [celebrate](https://github.com/arb/celebrate)
+- [winston](https://github.com/winstonjs/winston)
+- [express-winston](https://www.npmjs.com/package/express-winston)
+- [pm2](https://www.npmjs.com/package/pm2)
+- [nginx](https://nginx.org/ru/)
+- [certbot](https://certbot.eff.org/)
+
 
 ## Инструкция по запуску проекта
 
